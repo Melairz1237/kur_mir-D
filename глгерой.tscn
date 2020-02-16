@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://reh/untitled.png" type="Texture" id=1]
+[ext_resource path="res://глгерой.gd" type="Script" id=2]
+[ext_resource path="res://reh/untitled (2).png" type="Texture" id=3]
+[ext_resource path="res://reh/untitled (1).png" type="Texture" id=4]
+[ext_resource path="res://reh/erti.png" type="Texture" id=5]
+[ext_resource path="res://reh/untitled (4).png" type="Texture" id=6]
+[ext_resource path="res://reh/untitled (3).png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "jamp",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "fall",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50.3684, 103.737 )
+
+[node name="StaticBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -27.3684, -131.579 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 250 )
